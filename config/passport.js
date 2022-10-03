@@ -3,7 +3,6 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
-const { findUserByEmail } = require('../controllers/users/findUserByEmail.js');
 const { User } = require('../models/users.js')
 
 // Configuring local strategy for the application

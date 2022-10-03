@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
-const userSchema = new Schema ({
+const userSchema = new Schema({
     firstName: {
         type: String,
         required: [true, 'Please enter your name.']
@@ -23,9 +23,25 @@ const userSchema = new Schema ({
     userImageURL: {
         type: String  // store profile picture URL in the database instead of the image file
     },
-    favoriteItems:          [ObjectId],
-    recentlyBoughtItems:    [ObjectId], // add ref: Item to these arrays later
-    recentSearchedItems:    [ObjectId]
+    favoriteItems: [{
+        type: ObjectId,
+        ref: 'Item'
+    }],
+    recentlyBoughtItems: [{
+        type: ObjectId,
+        ref: 'Item'
+    }],
+    recentSearchedItems: [{
+        type: ObjectId,
+        ref: 'Item'
+    }],
+    shoppingList: [{
+        itemID: { type: ObjectId, ref: 'Item' },
+        quantity: { type: Number, min: 1 },
+        expiryType: { type: String, enum: ['Use by', 'Best before', 'Not available'] },
+        expiryDate: { type: Date },
+        timeToUse: { type: Date }
+    }]
 });
 
 userSchema.plugin(beautifyUnique);

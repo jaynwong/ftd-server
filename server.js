@@ -13,7 +13,9 @@ const MongoStore = require('connect-mongo');
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -47,14 +49,10 @@ app.use(passport.session());
 /*
  * ---------- APPLICATION ROUTING ----------
  */
-
-app.get('/', (req, res) => {
-    res.send('<h1>Team Sushi\'s grocery app is coming soon!</h1>');
-})
-
-// Routing for users
+const { itemRouter } = require('./routes/itemRouter.js');
 const { userRouter } = require('./routes/userRouter.js');
 
+app.use('/item', itemRouter);
 app.use('/user', userRouter);
 
 /*
