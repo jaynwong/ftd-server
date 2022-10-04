@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 
 // Connect to different databases based on the environment
 const getDBURL = () => {
-    if (process.env.NODE_ENV == 'development') {
+    var environment = process.env.NODE_ENV || 'testing';
+    if (environment == 'development') {
         return process.env.MONGO_DEV_URI;
-    } else if (process.env.NODE_ENV == 'testing') {
+    } else if (environment == 'testing') {
         return process.env.MONGO_TEST_URI;
-    } else if (process.env.NODE_ENV == 'production') {
+    } else if (environment == 'production') {
         return process.env.MONGO_PROD_URI;
     }
     else {
