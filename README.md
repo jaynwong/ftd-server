@@ -4,7 +4,7 @@ Please run <i>npm install</i> to install all the dependencies in the <b>server</
 
 To run the server, use the commands:
 
- ** please note for mac systems all of these commands do the same and runs the server with the testing database stored in Atlas (cloud), so you can just use `npm start` ** if you want to test the production deplopyment locally change the default "testing" environment in line 6 of conn.js to "production".
+ *** please note for mac systems all of these commands do the same and runs the server with the testing database stored in Atlas (cloud), so you can just use `npm start` *** if you want to test the production deplopyment locally change the default "testing" environment in line 6 of conn.js to "production".
  
 <ul>
     <li><i>npm run start-dev</i> to run the server with your local database</li>
