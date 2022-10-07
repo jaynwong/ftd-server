@@ -1,5 +1,5 @@
 // Importing modules
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const { dbURI } = require('./config/database/conn.js');
 
 const express = require('express');
