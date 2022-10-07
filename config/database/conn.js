@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 const getDBURL = () => {
     var environment = process.env.NODE_ENV || 'testing';
     if (environment == 'development') {
-        return process.env.MONGO_DEV_URI;
+        return process.env.MONGO_DEV_URL;
     } else if (environment == 'testing') {
-        return process.env.MONGO_TEST_URI;
+        return process.env.MONGO_TEST_URL;
     } else if (environment == 'production') {
-        return process.env.MONGO_PROD_URI;
+        return process.env.MONGO_PROD_URL;
     }
     else {
         console.log(`Environment is undefined or incorrect.`);
