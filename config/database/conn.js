@@ -1,4 +1,5 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 const mongoose = require('mongoose');
 
 // Connect to different databases based on the environment
