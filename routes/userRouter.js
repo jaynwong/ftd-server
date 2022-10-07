@@ -7,17 +7,17 @@ const userRouter = express.Router();
 userRouter.post('/login', (req, res, next) => {
     passport.authenticate('user-login', (err, user) => {
         if (err) throw err;
-        if (!user) res.send(`Incorrect credentials, please try again.`);
+        if (!user) res.send(false);
         else {
             req.logIn(user, (err) => {
                 if (err) throw err;
-                res.send(`Welcome back, ${user.firstName}!`);
-                console.log(req.user);
+                res.send(user);
+                console.log(req.sessionID);
             })
         }
     })
     (req, res, next);
-})
+});
 
 userRouter.post('/register', userController.registerUser);
 

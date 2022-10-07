@@ -14,7 +14,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-    credentials: true
+    credentials: true,
+    optionsSuccessStatus: 200,
+    origin: 'http://localhost:3000' // Change this origin to front end url in production
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -28,6 +30,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
+        sameSite: 'none',
+        httpOnly: false,
         maxAge: 1 * 60 * 60 * 1000 // 1 hour = 60 minutes * 60 seconds * 1000 ms
     },
     store: MongoStore.create({

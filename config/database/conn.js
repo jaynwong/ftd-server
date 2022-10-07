@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 // Connect to different databases based on the environment
 const getDBURL = () => {
     if (process.env.NODE_ENV == 'development') {
-        return process.env.MONGO_DEV_URI;
+        return process.env.MONGO_DEV_URL;
     } else if (process.env.NODE_ENV == 'testing') {
-        return process.env.MONGO_TEST_URI;
+        return process.env.MONGO_TEST_URL;
     } else if (process.env.NODE_ENV == 'production') {
-        return process.env.MONGO_PROD_URI;
+        return process.env.MONGO_PROD_URL;
     }
     else {
         console.log(`Environment is undefined or incorrect.`);
