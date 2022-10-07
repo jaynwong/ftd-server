@@ -23,7 +23,7 @@
     "dotenv": "^16.0.3"
   },
   "scripts": {
-    "start": "npm install&& npm install dotenv&& node server.js",
+    "start": "node server.js",
     "start-dev": "set NODE_ENV=development&& node server.js",
     "start-test": "set NODE_ENV=testing&& node server.js",
     "start-prod": "set NODE_ENV=production&& node server.js",
