@@ -33,9 +33,9 @@ userRouter.post('/logout', (req, res, next) => {
 userRouter.get('/protected', (req, res, next) => {
     console.log(req.session);
     if (req.isAuthenticated()) {
-        res.send('<h1>You are authenticated</h1>');
+        res.send(true);
     } else {
-        res.send('<h1>You are not authenticated</h1>');
+        res.send(false);
     }
 });
 
