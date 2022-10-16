@@ -38,7 +38,7 @@ passport.use('user-login', new LocalStrategy(
 
 // Session-based functions
 passport.serializeUser(function(user, cb) {
-	cb(null, user.id);
+	return cb(null, user.id);
 });
 
 passport.deserializeUser(function(id, cb) {
@@ -46,7 +46,7 @@ passport.deserializeUser(function(id, cb) {
 		if (err) {
 			return cb(err); 
 		}
-		cb(null, user);
+		return cb(null, user);
 	});
 });
 

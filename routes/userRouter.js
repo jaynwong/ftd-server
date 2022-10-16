@@ -32,8 +32,10 @@ userRouter.post('/logout', (req, res, next) => {
 // To check if the user credentials exist in the request
 userRouter.get('/protected', (req, res, next) => {
     console.log(req.session);
+    console.log(req);
     if (req.isAuthenticated()) {
         res.send(true);
+        next()
     } else {
         res.send(false);
     }
