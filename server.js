@@ -16,7 +16,12 @@ const port = process.env.PORT || 5000;
 app.use(cors({
     credentials: true,
     optionsSuccessStatus: 200,
-    origin: 'http://localhost:3000' // Change this origin to front end url in production
+    // Change this origin to front end url in production
+    origin: [
+        'http://127.0.0.1:3000',
+        'http://localhost:3000'
+    ],
+    exposedHeaders: ['Set-Cookie']
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -24,6 +29,7 @@ app.use(express.urlencoded({extended: true}));
 /*
  * ---------- SESSION SETUP ----------
  */
+app.set('trust proxy', 1);
 
 app.use(session({
     secret: process.env.SECRET,
@@ -31,8 +37,10 @@ app.use(session({
     saveUninitialized: true,
     proxy: true,
     cookie: {
-        sameSite: 'none',
-        httpOnly: false,
+        path: '/',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+        httpOnly: true,
         maxAge: 1 * 60 * 60 * 1000 // 1 hour = 60 minutes * 60 seconds * 1000 ms
     },
     store: MongoStore.create({
@@ -56,6 +64,7 @@ app.use(passport.session());
  */
 const { itemRouter } = require('./routes/itemRouter.js');
 const { userRouter } = require('./routes/userRouter.js');
+const { Cookie } = require('express-session');
 
 app.use('/item', itemRouter);
 app.use('/user', userRouter);

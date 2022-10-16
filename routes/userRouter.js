@@ -11,6 +11,7 @@ userRouter.post('/login', (req, res, next) => {
         else {
             req.logIn(user, (err) => {
                 if (err) throw err;
+                // res.cookie('_id', '123', { path: '/', secure: true, sameSite: 'none' });
                 res.send(user);
                 console.log(req.sessionID);
             })
