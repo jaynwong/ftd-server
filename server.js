@@ -13,13 +13,15 @@ const MongoStore = require('connect-mongo');
 const app = express();
 const port = process.env.PORT || 5000;
 
+
 app.use(cors({
     credentials: true,
     optionsSuccessStatus: 200,
     // Change this origin to front end url in production
     origin: [
         'http://127.0.0.1:3000',
-        'http://localhost:3000'
+        'http://localhost:3000',
+        'https://foodtodo.herokuapp.com/'
     ],
     exposedHeaders: ['Set-Cookie']
 }));
@@ -35,11 +37,10 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    proxy: true,
     cookie: {
         path: '/',
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === 'production' ? true : false,
+        sameSite: 'none',
+        secure: true,
         httpOnly: true,
         maxAge: 1 * 60 * 60 * 1000 // 1 hour = 60 minutes * 60 seconds * 1000 ms
     },

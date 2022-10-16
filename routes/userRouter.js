@@ -13,6 +13,7 @@ userRouter.post('/login', (req, res, next) => {
                 if (err) throw err;
                 // res.cookie('_id', '123', { path: '/', secure: true, sameSite: 'none' });
                 res.send(user);
+                console.log("login sessionID: ")
                 console.log(req.sessionID);
             })
         }
@@ -32,8 +33,7 @@ userRouter.post('/logout', (req, res, next) => {
 
 // To check if the user credentials exist in the request
 userRouter.get('/protected', (req, res, next) => {
-    console.log(req.session);
-    console.log(req);
+    console.log("sessionID : " + req.sessionID);
     if (req.isAuthenticated()) {
         res.send(true);
         next()
