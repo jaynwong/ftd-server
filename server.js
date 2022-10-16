@@ -18,11 +18,7 @@ app.use(cors({
     credentials: true,
     optionsSuccessStatus: 200,
     // Change this origin to front end url in production
-    origin: [
-        'http://127.0.0.1:3000',
-        'http://localhost:3000',
-        'https://foodtodo.herokuapp.com/'
-    ],
+    origin: 'https://foodtodo.herokuapp.com/',
     exposedHeaders: ['Set-Cookie']
 }));
 app.use(express.json());
