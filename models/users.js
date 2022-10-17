@@ -28,8 +28,11 @@ const userSchema = new Schema({
         ref: 'Item'
     }],
     recentlyBoughtItems: [{
-        type: ObjectId,
-        ref: 'Item'
+        itemID: { type: ObjectId, ref: 'Item' },
+        quantity: { type: Number, min: 1 },
+        expiryType: { type: String, enum: ['Use by', 'Best before', 'Not available'] },
+        expiryDate: { type: Date },
+        timeToUse: { type: Date }
     }],
     recentSearchedItems: [{
         type: ObjectId,

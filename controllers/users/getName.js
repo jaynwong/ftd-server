@@ -4,14 +4,14 @@
 const { User } = require('../../models/users.js');
 const { db } = require('../../config/database');
 
-const findUserByEmail = async (req, res, next) => {
+const getName = async (req, res, next) => {
     try {
-        const thisUser = await User.findOne({email: req.params.email});
-        return thisUser.exec();
+        const thisUser = await User.findById(req.user._id);
+        res.send(thisUser.firstName);
     }
     catch (err) {
         console.log('User not found');
     }
 }
 
-module.exports = { findUserByEmail };
+module.exports = { getName };

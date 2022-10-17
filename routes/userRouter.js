@@ -42,4 +42,7 @@ userRouter.get('/protected', (req, res, next) => {
     }
 });
 
+// Get user's first name
+userRouter.get('/getName', (req, res, next) => userController.getName(req, res, next));
+
 module.exports = { userRouter }

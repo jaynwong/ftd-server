@@ -1,7 +1,7 @@
-const { findUserByEmail } = require('./findUserByEmail.js');
+const { getName } = require('./getName.js');
 const { registerUser } = require('./registerUser.js');
 
 module.exports = {
-    findUserByEmail,
+    getName,
     registerUser
 };
