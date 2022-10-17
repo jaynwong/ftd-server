@@ -3,10 +3,10 @@ const { connection } = require('../../config/database/conn.js');
 
 const getRecentlyBought = async (req, res, next) => {
     try {
-        var thisUserRecentlyBought = await User.findById(req.user._id, 'recentlyBoughtItems').lean();
+        const thisUser = await User.findById(req.user._id);
         var recentlyBoughtArray = [];
         // Loop through user RecentlyBought to get every favorite item's objectID
-        for (const itemID of thisUserRecentlyBought) {
+        for (const itemID of thisUser.recentlyBoughtItems) {
             thisItem = await Item.findById(itemID);
             recentlyBoughtArray.push(thisItem);
         }

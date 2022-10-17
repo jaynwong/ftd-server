@@ -3,8 +3,8 @@ const { connection } = require('../../config/database/conn.js');
 
 const getShoppingList = async (req, res, next) => {
     try {
-        var shoppingList = User.findById(req.user._id, 'shoppingList').lean();
-        res.send(shoppingList);
+        const thisUser = await User.findById(req.user._id);
+        res.send(thisUser.shoppingList);
     }
     catch (err) {
         res.status(500)
