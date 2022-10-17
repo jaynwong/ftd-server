@@ -17,6 +17,7 @@ const requestAdd = async (req, res, next) => {
     }
     catch (err) {
         console.error(`Failed to add request: ${err}`);
+        res.send(err)
     }
 }
 
