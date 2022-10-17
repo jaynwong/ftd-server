@@ -21,4 +21,13 @@ itemRouter.post('/addItem', (req, res, next) => itemController.addItem(req, res,
 // Remove an item from a user's shopping list
 itemRouter.post('/removeItem', (req, res, next) => itemController.removeItem(req, res, next));
 
+// Request to add an item to the database
+itemRouter.post('/requestAdd', (req, res, next) => itemController.requestAdd(req, res, next));
+
+// Request to remove an item from the database
+itemRouter.post('/requestRemove', (req, res, next) => itemController.requestRemove(req, res, next));
+
+// Get the information of an item based on the id in the parameter
+itemRouter.get('/getOneItem/:id', (req, res, next) => itemController.getOneItem(req, res, next));
+
 module.exports = { itemRouter }

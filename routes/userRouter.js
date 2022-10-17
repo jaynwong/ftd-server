@@ -11,10 +11,8 @@ userRouter.post('/login', (req, res, next) => {
         else {
             req.logIn(user, (err) => {
                 if (err) throw err;
-                // res.cookie('_id', '123', { path: '/', secure: true, sameSite: 'none' });
                 res.send(user);
-                console.log("login sessionID: ")
-                console.log(req.sessionID);
+                console.log(`Login sessionID: ${req.sessionID}`);
             })
         }
     })
@@ -36,9 +34,10 @@ userRouter.get('/protected', (req, res, next) => {
     console.log("sessionID : " + req.sessionID);
     if (req.isAuthenticated()) {
         res.send(true);
-        next()
+        next();
     } else {
         res.send(false);
+        next();
     }
 });
 

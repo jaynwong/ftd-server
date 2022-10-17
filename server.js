@@ -37,7 +37,7 @@ app.use(session({
 
     cookie: {
         path: '/',
-        sameSite: 'none',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         secure: process.env.NODE_ENV === 'production' ? true : false,
         httpOnly: true,
         maxAge: 1 * 60 * 60 * 1000 // 1 hour = 60 minutes * 60 seconds * 1000 ms
@@ -63,7 +63,6 @@ app.use(passport.session());
  */
 const { itemRouter } = require('./routes/itemRouter.js');
 const { userRouter } = require('./routes/userRouter.js');
-const { Cookie } = require('express-session');
 
 app.use('/item', itemRouter);
 app.use('/user', userRouter);
