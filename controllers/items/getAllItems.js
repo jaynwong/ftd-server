@@ -7,7 +7,7 @@ const getAllItems = async (req, res, next) => {
         res.send(items);
     }
     catch (err) {
-        res.status(500)
+        res.status(500);
         res.send(`An error has been occured. Please try again later.`);
         console.log(err);
     }

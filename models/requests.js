@@ -10,9 +10,13 @@ const newItemRequestSchema = new Schema({
     itemURL: {
         type: String
     },
+    category: {
+        type: String,
+        enum: ['Fresh Produce', 'Dairy', 'Meat & Poultry', 'Pantry', 'Alcohol']
+    },
     reason: {
         type: String,
-        enum: ['Item not listed', 'Different brand', 'Different size']
+        enum: ['Item not listed', 'Different brand', 'Different size', 'Other']
     }
 });
 
@@ -26,7 +30,7 @@ const removeItemRequestSchema = new Schema({
     },
     reason: {
         type: String,
-        enum: ['Wrong details', 'Item is discontinued'] 
+        enum: ['Wrong details', 'Item is discontinued', 'Other'] 
     }
 });
 

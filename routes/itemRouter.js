@@ -6,6 +6,12 @@ const itemRouter = express.Router();
 // Get all the items from the database to be displayed on the website (catalogue)
 itemRouter.get('/', (req, res, next) => itemController.getAllItems(req, res, next));
 
+// Get all items in a user's favorites
+itemRouter.get('/favorites', (req, res, next) => itemController.getFavorites(req, res, next));
+
+// Get all items recently bought by a user
+itemRouter.get('/recentlyBought', (req, res, next) => itemController.getRecentlyBought(req, res, next));
+
 // Get all items in a user's shopping list
 itemRouter.get('/shoppingList', (req, res, next) => itemController.getShoppingList(req, res, next));
 

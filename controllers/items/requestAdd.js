@@ -6,6 +6,7 @@ const requestAdd = async (req, res, next) => {
         await newItemRequest.create({
             itemName: req.body.itemName,
             itemURL: req.body.itemURL,
+            category: req.body.category,
             reason: req.body.reason
         })
         .then(newRequest => {
