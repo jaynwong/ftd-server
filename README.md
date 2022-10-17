@@ -15,3 +15,16 @@ To run the server, use the commands:
 </ul>
 
 Please also put the .env file into the server folder, in the same directory with the <i>server.js</i> file. The .env file should be in your email inbox.
+
+***Deployment to heroku:***
+
+Set up your Heroku CLI (command line interface) to prepare for deployment (Only needs to be done ***once***):
+Sign up for a Heroku account with your uni email (that has been added as a collaborator to the FoodToDo Heroku app)
+on a mac terminal: brew tap heroku/brew && brew install heroku (for windows and linux, refer to the instructions here: https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+1. heroku login
+2. heroku git:remote -a ftd-server
+
+Deploy the main branch to Heroku (make sure you are on the main branch):
+1. git checkout main 
+2. git pull (to pull the latest changes from main)
+3. git push heroku
