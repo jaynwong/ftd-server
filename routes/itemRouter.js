@@ -30,4 +30,6 @@ itemRouter.post('/requestRemove', (req, res, next) => itemController.requestRemo
 // Get the information of an item based on the id in the parameter
 itemRouter.get('/getOneItem/:id', (req, res, next) => itemController.getOneItem(req, res, next));
 
+// Add an item to a user's favorite
+itemRouter.post('/addFavorite', (req, res, next) => itemController.addItem(req, res, next));
 module.exports = { itemRouter }
