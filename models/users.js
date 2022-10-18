@@ -24,8 +24,10 @@ const userSchema = new Schema({
         type: String  // store profile picture URL in the database instead of the image file
     },
     favoriteItems: [{
-        type: ObjectId,
-        ref: 'Item'
+        itemID: {
+            type: ObjectId,
+            ref: 'Item'
+        }
     }],
     recentlyBoughtItems: [{
         itemID: { type: ObjectId, ref: 'Item' },
