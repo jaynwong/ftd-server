@@ -6,8 +6,8 @@ const getFavorites = async (req, res, next) => {
         const thisUser = await User.findById(req.user._id);
         var favoritesArray = [];
         // Loop through user favorites to get every favorite item's objectID
-        for (const itemID of thisUser.favoriteItems) {
-            thisItem = await Item.findById(itemID);
+        for (const item of thisUser.favoriteItems) {
+            thisItem = await Item.findById(item._id);
             favoritesArray.push(thisItem);
         }
         res.send(favoritesArray);

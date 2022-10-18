@@ -6,8 +6,8 @@ const getRecentlyBought = async (req, res, next) => {
         const thisUser = await User.findById(req.user._id);
         var recentlyBoughtArray = [];
         // Loop through user RecentlyBought to get every favorite item's objectID
-        for (const itemID of thisUser.recentlyBoughtItems) {
-            thisItem = await Item.findById(itemID);
+        for (const item of thisUser.recentlyBoughtItems) {
+            thisItem = await Item.findById(item.itemID);
             recentlyBoughtArray.push(thisItem);
         }
         res.send(recentlyBoughtArray);
