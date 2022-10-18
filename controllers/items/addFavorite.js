@@ -12,7 +12,7 @@ const addFavorite = async (req, res, next) => {
             .then(user => {
                 console.log(user);
                 res.status(200);
-                res.send(`${req.body.itemID} has been added to your shopping list`);
+                res.send(`${req.body.itemID} has been added to your favorite list`);
                 next();
             })
     }

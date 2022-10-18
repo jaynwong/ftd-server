@@ -31,5 +31,9 @@ itemRouter.post('/requestRemove', (req, res, next) => itemController.requestRemo
 itemRouter.get('/getOneItem/:id', (req, res, next) => itemController.getOneItem(req, res, next));
 
 // Add an item to a user's favorite
-itemRouter.post('/addFavorite', (req, res, next) => itemController.addItem(req, res, next));
+itemRouter.post('/addFavorite', (req, res, next) => itemController.addFavorite(req, res, next));
+
+// Remove an item from a user's favorite
+itemRouter.post('/removeFavorite', (req, res, next) => itemController.removeFavorite(req, res, next));
+
 module.exports = { itemRouter }
