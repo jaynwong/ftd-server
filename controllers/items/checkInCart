@@ -1,0 +1,26 @@
+const { User, Item } = require('../../models');
+const { connection } = require('../../config/database/conn.js');
+
+const checkInCart = async (req, res, next) => {
+    try {
+        const thisUser = await User.findById(req.user._id);
+        let inCart = false;
+
+        // Loop through user cart to check if item is in cart
+        for (const item of thisUser.shoppingList) {
+            if (item.itemID == req.params.itemID) {
+                inCart = true;
+                break;
+            }
+        }
+
+        res.send(inCart);
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`An error has been occured. Please try again later.`);
+        console.log(err);
+    }
+}
+
+module.exports = { checkInCart }
